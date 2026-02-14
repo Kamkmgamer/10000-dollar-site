@@ -57,7 +57,7 @@ export default function ReservationsPage() {
 
     if (confirmed) {
         return (
-            <div className="min-h-screen bg-[var(--obsidian-950)] pt-24 pb-32">
+            <div className="min-h-screen bg-[var(--obsidian-950)] pb-32">
                 <div className="mx-auto max-w-lg px-4 text-center sm:px-6">
                     <motion.div
                         initial={{ opacity: 0, scale: 0.9 }}
@@ -112,7 +112,7 @@ export default function ReservationsPage() {
     }
 
     return (
-        <div className="min-h-screen bg-[var(--obsidian-950)] pt-24 pb-32">
+        <div className="min-h-screen bg-[var(--obsidian-950)] pb-32">
             <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
                 {/* Header */}
                 <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="text-center">
@@ -139,10 +139,10 @@ export default function ReservationsPage() {
                             <div className="flex items-center gap-2">
                                 <div
                                     className={`flex h-7 w-7 items-center justify-center rounded-full text-[10px] font-bold ${step > i + 1
-                                            ? 'bg-[var(--copper-500)] text-[var(--obsidian-950)]'
-                                            : step === i + 1
-                                                ? 'border-2 border-[var(--copper-500)] text-[var(--copper-400)]'
-                                                : 'border border-[var(--obsidian-600)] text-[var(--cream-500)]'
+                                        ? 'bg-[var(--copper-500)] text-[var(--obsidian-950)]'
+                                        : step === i + 1
+                                            ? 'border-2 border-[var(--copper-500)] text-[var(--copper-400)]'
+                                            : 'border border-[var(--obsidian-600)] text-[var(--cream-500)]'
                                         }`}
                                 >
                                     {step > i + 1 ? <Check className="h-3.5 w-3.5" /> : i + 1}
@@ -171,8 +171,8 @@ export default function ReservationsPage() {
                                                 key={loc}
                                                 onClick={() => setLocation(loc)}
                                                 className={`rounded-xl border p-5 text-center transition-all ${location === loc
-                                                        ? 'border-[var(--copper-500)]/40 bg-[var(--copper-500)]/5'
-                                                        : 'border-[var(--obsidian-600)] hover:border-[var(--copper-500)]/20'
+                                                    ? 'border-[var(--copper-500)]/40 bg-[var(--copper-500)]/5'
+                                                    : 'border-[var(--obsidian-600)] hover:border-[var(--copper-500)]/20'
                                                     }`}
                                             >
                                                 <MapPin className={`mx-auto h-5 w-5 ${location === loc ? 'text-[var(--copper-400)]' : 'text-[var(--cream-500)]'}`} />
@@ -190,8 +190,8 @@ export default function ReservationsPage() {
                                                     key={n}
                                                     onClick={() => setGuests(n)}
                                                     className={`flex h-12 w-12 items-center justify-center rounded-full text-sm font-medium transition-all ${guests === n
-                                                            ? 'bg-[var(--copper-500)] text-[var(--obsidian-950)]'
-                                                            : 'border border-[var(--obsidian-600)] text-[var(--cream-400)] hover:border-[var(--copper-500)]/20'
+                                                        ? 'bg-[var(--copper-500)] text-[var(--obsidian-950)]'
+                                                        : 'border border-[var(--obsidian-600)] text-[var(--cream-400)] hover:border-[var(--copper-500)]/20'
                                                         }`}
                                                 >
                                                     {n}
@@ -200,8 +200,8 @@ export default function ReservationsPage() {
                                             <button
                                                 onClick={() => setGuests(10)}
                                                 className={`flex h-12 items-center justify-center rounded-full px-4 text-sm font-medium transition-all ${guests >= 9
-                                                        ? 'bg-[var(--copper-500)] text-[var(--obsidian-950)]'
-                                                        : 'border border-[var(--obsidian-600)] text-[var(--cream-400)] hover:border-[var(--copper-500)]/20'
+                                                    ? 'bg-[var(--copper-500)] text-[var(--obsidian-950)]'
+                                                    : 'border border-[var(--obsidian-600)] text-[var(--cream-400)] hover:border-[var(--copper-500)]/20'
                                                     }`}
                                             >
                                                 9+
@@ -240,14 +240,14 @@ export default function ReservationsPage() {
                                                     disabled={day === 0 || day < today.getDate()}
                                                     onClick={() => setSelectedDate(day)}
                                                     className={`rounded-lg py-2.5 text-sm transition-all ${day === 0
-                                                            ? ''
-                                                            : day < today.getDate()
-                                                                ? 'text-[var(--obsidian-500)] cursor-not-allowed'
-                                                                : selectedDate === day
-                                                                    ? 'bg-[var(--copper-500)] text-[var(--obsidian-950)] font-bold'
-                                                                    : day === today.getDate()
-                                                                        ? 'border border-[var(--copper-500)]/30 text-[var(--copper-400)]'
-                                                                        : 'text-[var(--cream-300)] hover:bg-[var(--obsidian-700)]'
+                                                        ? ''
+                                                        : day < today.getDate()
+                                                            ? 'text-[var(--obsidian-500)] cursor-not-allowed'
+                                                            : selectedDate === day
+                                                                ? 'bg-[var(--copper-500)] text-[var(--obsidian-950)] font-bold'
+                                                                : day === today.getDate()
+                                                                    ? 'border border-[var(--copper-500)]/30 text-[var(--copper-400)]'
+                                                                    : 'text-[var(--cream-300)] hover:bg-[var(--obsidian-700)]'
                                                         }`}
                                                 >
                                                     {day || ''}
@@ -268,10 +268,10 @@ export default function ReservationsPage() {
                                                         disabled={!isAvailable(time)}
                                                         onClick={() => setSelectedTime(time)}
                                                         className={`rounded-lg py-2.5 text-sm transition-all ${!isAvailable(time)
-                                                                ? 'text-[var(--obsidian-500)] line-through cursor-not-allowed'
-                                                                : selectedTime === time
-                                                                    ? 'bg-[var(--copper-500)] text-[var(--obsidian-950)] font-bold'
-                                                                    : 'border border-[var(--obsidian-600)] text-[var(--cream-300)] hover:border-[var(--copper-500)]/20'
+                                                            ? 'text-[var(--obsidian-500)] line-through cursor-not-allowed'
+                                                            : selectedTime === time
+                                                                ? 'bg-[var(--copper-500)] text-[var(--obsidian-950)] font-bold'
+                                                                : 'border border-[var(--obsidian-600)] text-[var(--cream-300)] hover:border-[var(--copper-500)]/20'
                                                             }`}
                                                     >
                                                         {time}
@@ -310,8 +310,8 @@ export default function ReservationsPage() {
                                                     key={occ}
                                                     onClick={() => setOccasion(occ)}
                                                     className={`rounded-full px-4 py-2 text-xs transition-all ${occasion === occ
-                                                            ? 'bg-[var(--copper-500)] text-[var(--obsidian-950)] font-medium'
-                                                            : 'border border-[var(--obsidian-600)] text-[var(--cream-400)] hover:border-[var(--copper-500)]/20'
+                                                        ? 'bg-[var(--copper-500)] text-[var(--obsidian-950)] font-medium'
+                                                        : 'border border-[var(--obsidian-600)] text-[var(--cream-400)] hover:border-[var(--copper-500)]/20'
                                                         }`}
                                                 >
                                                     {occ}
