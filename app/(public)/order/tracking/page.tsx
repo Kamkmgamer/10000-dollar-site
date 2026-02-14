@@ -46,7 +46,7 @@ export default function OrderTrackingPage() {
     }, []);
 
     return (
-        <div className="min-h-screen bg-[var(--obsidian-950)] pt-24 pb-32">
+        <div className="min-h-screen bg-[var(--obsidian-950)] pb-32">
             <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
                 {/* Header */}
                 <motion.div
@@ -104,10 +104,10 @@ export default function OrderTrackingPage() {
                                                 transition: { repeat: currentStep === step.id ? Infinity : 0, duration: 2 },
                                             }}
                                             className={`flex h-10 w-10 items-center justify-center rounded-full transition-all duration-500 ${currentStep > step.id
-                                                    ? 'bg-[var(--copper-500)] text-[var(--obsidian-950)]'
-                                                    : currentStep === step.id
-                                                        ? 'border-2 border-[var(--copper-500)] bg-[var(--copper-500)]/10 text-[var(--copper-400)] shadow-[0_0_20px_rgba(199,125,74,0.2)]'
-                                                        : 'border border-[var(--obsidian-600)] text-[var(--cream-500)]'
+                                                ? 'bg-[var(--copper-500)] text-[var(--obsidian-950)]'
+                                                : currentStep === step.id
+                                                    ? 'border-2 border-[var(--copper-500)] bg-[var(--copper-500)]/10 text-[var(--copper-400)] shadow-[0_0_20px_rgba(199,125,74,0.2)]'
+                                                    : 'border border-[var(--obsidian-600)] text-[var(--cream-500)]'
                                                 }`}
                                         >
                                             {currentStep > step.id ? (
@@ -123,8 +123,8 @@ export default function OrderTrackingPage() {
                                         <div className="flex items-center justify-between">
                                             <h3
                                                 className={`font-medium ${currentStep >= step.id
-                                                        ? 'text-[var(--cream-100)]'
-                                                        : 'text-[var(--cream-500)]'
+                                                    ? 'text-[var(--cream-100)]'
+                                                    : 'text-[var(--cream-500)]'
                                                     }`}
                                             >
                                                 {step.label}

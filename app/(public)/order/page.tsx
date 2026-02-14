@@ -61,7 +61,7 @@ export default function OrderPage() {
     };
 
     return (
-        <div className="min-h-screen bg-[var(--obsidian-950)] pt-24 pb-32">
+        <div className="min-h-screen bg-[var(--obsidian-950)] pb-32">
             <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
                 {/* Header */}
                 <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
@@ -84,8 +84,8 @@ export default function OrderPage() {
                         <button key={s} onClick={() => setStep(i + 1)} className="flex items-center gap-2">
                             <div
                                 className={`flex h-8 w-8 items-center justify-center rounded-full text-xs font-bold transition-all ${step >= i + 1
-                                        ? 'bg-[var(--copper-500)] text-[var(--obsidian-950)]'
-                                        : 'border border-[var(--obsidian-600)] text-[var(--cream-500)]'
+                                    ? 'bg-[var(--copper-500)] text-[var(--obsidian-950)]'
+                                    : 'border border-[var(--obsidian-600)] text-[var(--cream-500)]'
                                     }`}
                             >
                                 {step > i + 1 ? <Check className="h-4 w-4" /> : i + 1}
@@ -114,8 +114,8 @@ export default function OrderPage() {
                                                 key={type.id}
                                                 onClick={() => setOrderType(type.id)}
                                                 className={`flex flex-col items-center gap-2 rounded-xl border p-4 transition-all ${orderType === type.id
-                                                        ? 'border-[var(--copper-500)]/40 bg-[var(--copper-500)]/5'
-                                                        : 'border-[var(--obsidian-600)] hover:border-[var(--copper-500)]/20'
+                                                    ? 'border-[var(--copper-500)]/40 bg-[var(--copper-500)]/5'
+                                                    : 'border-[var(--obsidian-600)] hover:border-[var(--copper-500)]/20'
                                                     }`}
                                             >
                                                 <type.icon
@@ -233,8 +233,8 @@ export default function OrderPage() {
                                                 key={pct}
                                                 onClick={() => setTipPercent(pct)}
                                                 className={`rounded-lg border p-3 text-center transition-all ${tipPercent === pct
-                                                        ? 'border-[var(--copper-500)]/40 bg-[var(--copper-500)]/10 text-[var(--copper-400)]'
-                                                        : 'border-[var(--obsidian-600)] text-[var(--cream-400)]'
+                                                    ? 'border-[var(--copper-500)]/40 bg-[var(--copper-500)]/10 text-[var(--copper-400)]'
+                                                    : 'border-[var(--obsidian-600)] text-[var(--cream-400)]'
                                                     }`}
                                             >
                                                 <p className="text-lg font-bold">{pct}%</p>
