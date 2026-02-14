@@ -2,7 +2,12 @@
 
 import Link from 'next/link';
 import { motion, useScroll, useTransform } from 'framer-motion';
-import { useRef } from 'react';
+import { useRef, lazy, Suspense } from 'react';
+import dynamic from 'next/dynamic';
+
+const Scene3D = dynamic(() => import('@/components/3d/Scene3D').then(m => ({ default: m.Scene3D })), { ssr: false });
+const HeroParticles = dynamic(() => import('@/components/3d/HeroParticles').then(m => ({ default: m.HeroParticles })), { ssr: false });
+const LocationGlobe = dynamic(() => import('@/components/3d/LocationGlobe').then(m => ({ default: m.LocationGlobe })), { ssr: false });
 import {
     ArrowRight,
     Star,
@@ -260,8 +265,10 @@ export default function HomePage() {
                     />
                 </div>
 
+
+
                 {/* Noise texture */}
-                <div className="noise-bg absolute inset-0" />
+                <div className="noise-bg absolute inset-0 z-[2]" />
 
                 {/* Bottom gradient fade */}
                 <div className="absolute bottom-0 left-0 right-0 h-48 bg-gradient-to-t from-[var(--obsidian-950)] to-transparent" />
@@ -269,13 +276,13 @@ export default function HomePage() {
                 {/* Hero Content */}
                 <motion.div
                     style={{ opacity: heroOpacity }}
-                    className="relative z-10 mx-auto max-w-5xl px-4 text-center sm:px-6 lg:px-8"
+                    className="relative z-10 mx-auto max-w-5xl px-4 text-center sm:px-6 lg:px-8 pt-20"
                 >
                     <motion.div
                         variants={stagger}
                         initial="hidden"
                         animate="visible"
-                        className="space-y-8"
+                        className="space-y-4"
                     >
                         {/* Top badge */}
                         <motion.div variants={fadeUp}>
@@ -332,9 +339,9 @@ export default function HomePage() {
                         </motion.div>
 
                         {/* Live stats strip */}
-                        <motion.div variants={fadeUp} className="pt-12">
+                        <motion.div variants={fadeUp} className="pt-2">
                             <div className="copper-line mx-auto max-w-sm" />
-                            <div className="mt-10 grid grid-cols-2 gap-8 sm:grid-cols-4">
+                            <div className="mt-4 grid grid-cols-2 gap-8 sm:grid-cols-4">
                                 {[
                                     { value: '3', label: 'Locations', icon: MapPin },
                                     { value: '15+', label: 'Years', icon: Crown },
@@ -464,7 +471,7 @@ export default function HomePage() {
                                             alt={dish.name}
                                             className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
                                         />
-                                        <div className="absolute inset-0 bg-gradient-to-t from-[var(--obsidian-900)] via-transparent to-transparent opacity-80" />
+                                        <div className="absolute inset-0 bg-gradient-to-t from-[var(--obsidian-900)] via-[var(--obsidian-900)]/20 to-transparent" />
                                         {/* Overlay badges */}
                                         <div className="absolute top-4 left-4 flex gap-2">
                                             {dish.popular && (
@@ -491,7 +498,7 @@ export default function HomePage() {
                                     </div>
 
                                     {/* Content */}
-                                    <div className="p-6 sm:p-8 flex-1 flex flex-col">
+                                    <div className="relative z-10 -mt-px p-6 sm:p-8 flex-1 flex flex-col bg-gradient-to-b from-[var(--obsidian-900)] to-transparent">
                                         <div className="flex items-start justify-between gap-4">
                                             <div className="flex-1">
                                                 <span className="text-[10px] uppercase tracking-[0.2em] text-[var(--copper-500)]">
@@ -592,6 +599,18 @@ export default function HomePage() {
           ═══════════════════════════════════════════ */}
             <section className="relative py-32">
                 <div className="absolute inset-0 bg-gradient-to-b from-[var(--obsidian-950)] via-[var(--obsidian-900)]/30 to-[var(--obsidian-950)]" />
+
+                {/* 3D Globe background */}
+                <div className="absolute inset-0 flex items-center justify-center pointer-events-none opacity-30">
+                    <Suspense fallback={null}>
+                        <Scene3D
+                            className="h-[500px] w-[500px]"
+                            camera={{ position: [0, 0, 5], fov: 50 }}
+                        >
+                            <LocationGlobe />
+                        </Scene3D>
+                    </Suspense>
+                </div>
 
                 <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                     <motion.div
