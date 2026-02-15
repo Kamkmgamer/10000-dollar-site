@@ -230,84 +230,73 @@ export function Navigation() {
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         exit={{ opacity: 0 }}
-                        transition={{ duration: 0.4 }}
-                        className="fixed inset-0 z-40 bg-[var(--obsidian-950)]/98 backdrop-blur-xl lg:hidden"
+                        transition={{ duration: 0.3 }}
+                        className="fixed inset-0 z-40 bg-[var(--obsidian-950)] lg:hidden"
                     >
                         <motion.nav
-                            variants={stagger}
-                            initial="hidden"
-                            animate="visible"
-                            exit="exit"
-                            className="flex h-full flex-col items-center justify-center gap-2"
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            exit={{ opacity: 0, y: 20 }}
+                            transition={{ duration: 0.3, delay: 0.1 }}
+                            className="flex h-full flex-col px-6 pt-24 pb-8"
                         >
-                            {navLinks.map((link) =>
-                                link.children ? (
-                                    link.children.map((child) => (
-                                        <motion.div key={child.href} variants={slideUp}>
+                            <div className="flex flex-col gap-1">
+                                {navLinks.map((link, index) =>
+                                    link.children ? (
+                                        link.children.map((child, childIndex) => (
                                             <Link
+                                                key={child.href}
                                                 href={child.href}
                                                 onClick={() => setMobileOpen(false)}
-                                                className="block py-2 font-[family-name:var(--font-display)] text-lg text-[var(--cream-400)] transition-colors hover:text-[var(--copper-400)]"
+                                                className="block py-2 text-base text-[var(--cream-400)] transition-colors hover:text-[var(--copper-400)]"
+                                                style={{ animationDelay: `${(index + childIndex) * 50}ms` }}
                                             >
                                                 {child.label}
                                             </Link>
-                                        </motion.div>
-                                    ))
-                                ) : (
-                                    <motion.div key={link.href} variants={slideUp}>
+                                        ))
+                                    ) : (
                                         <Link
+                                            key={link.href}
                                             href={link.href}
                                             onClick={() => setMobileOpen(false)}
-                                            className="block py-3 font-[family-name:var(--font-display)] text-4xl font-bold text-[var(--cream-100)] transition-colors hover:text-[var(--copper-400)]"
+                                            className={`block py-3 text-lg font-medium transition-colors hover:text-[var(--copper-400)] ${
+                                                link.featured
+                                                    ? 'text-[var(--copper-400)]'
+                                                    : 'text-[var(--cream-100)]'
+                                            }`}
                                         >
                                             {link.label}
                                         </Link>
-                                    </motion.div>
-                                )
-                            )}
-                            <motion.div variants={slideUp} className="mt-8 flex flex-col items-center gap-4">
+                                    )
+                                )}
+                            </div>
+
+                            <div className="mt-auto flex flex-col gap-4">
                                 <Link href="/reservations" onClick={() => setMobileOpen(false)}>
-                                    <Button variant="copper" size="lg">
+                                    <Button variant="copper" size="default" className="w-full">
                                         Book a Table
                                     </Button>
                                 </Link>
-                                <div className="flex items-center gap-6 pt-4">
+
+                                <div className="flex items-center justify-center gap-8 pt-4 border-t border-[var(--copper-500)]/10">
                                     <Link
                                         href="/order"
                                         onClick={() => setMobileOpen(false)}
-                                        className="flex items-center gap-2 text-sm text-[var(--cream-400)] transition-colors hover:text-[var(--copper-400)]"
+                                        className="flex items-center gap-2 text-sm text-[var(--cream-400)] transition-colors hover:text-[var(--cream-100)]"
                                     >
                                         <ShoppingBag className="h-4 w-4" />
-                                        Order Online
+                                        Order
                                     </Link>
                                     <Link
                                         href="/account"
                                         onClick={() => setMobileOpen(false)}
-                                        className="flex items-center gap-2 text-sm text-[var(--cream-400)] transition-colors hover:text-[var(--copper-400)]"
+                                        className="flex items-center gap-2 text-sm text-[var(--cream-400)] transition-colors hover:text-[var(--cream-100)]"
                                     >
                                         <User className="h-4 w-4" />
                                         Account
                                     </Link>
                                 </div>
-                            </motion.div>
-
-                            {/* Decorative elements */}
-                            <motion.div
-                                variants={slideUp}
-                                className="absolute bottom-12 flex flex-col items-center gap-3"
-                            >
-                                <div className="flex items-center gap-1">
-                                    {[...Array(5)].map((_, i) => (
-                                        <Star
-                                            key={i}
-                                            className="h-3 w-3 fill-[var(--copper-500)] text-[var(--copper-500)]"
-                                        />
-                                    ))}
-                                </div>
-                                <p className="text-xs tracking-[0.2em] text-[var(--cream-500)]">
-                                    SINCE 2009 · NEW YORK
-                                </p>
-                            </motion.div>
+                            </div>
                         </motion.nav>
                     </motion.div>
                 )}

@@ -384,7 +384,7 @@ export default function HomePage() {
             {/* ═══════════════════════════════════════════
           ORDER ONLINE MARQUEE — Animated Ticker
           ═══════════════════════════════════════════ */}
-            <section className="relative overflow-hidden border-y border-[var(--copper-500)]/5 bg-[var(--obsidian-900)] py-4">
+            <section className="relative overflow-hidden border-y border-[var(--copper-500)]/5 bg-[var(--obsidian-900)] py-4 mt-8">
                 <div className="flex animate-marquee whitespace-nowrap">
                     {[...Array(2)].map((_, i) => (
                         <div key={i} className="flex items-center gap-12 px-6">
